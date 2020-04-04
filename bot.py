@@ -1,5 +1,8 @@
 import requests
+import os
 import datetime
+from flask import Flask, request
+server = Flask(__name__)
 
 url = "https://api.telegram.org/bot<1190897437:AAHIYNIR3b1fDrjHS5DTS2oYuFjSLaoRPtA>/"
 
@@ -68,8 +71,8 @@ def main():
 
 if __name__ == '__main__': 
 	server.debug = True
-    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000))) 
-    try:
-        main()
-    except KeyboardInterrupt:
-        exit()
+	server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000))) 
+	try:
+		main()
+	except KeyboardInterrupt:
+		exit()

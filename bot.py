@@ -100,7 +100,7 @@ def get_deck(message):
 
 	elif message.text == "Ще":
 		player.taken_cards.append(random.randrange(0,12,1))
-		croupier.cards[player.taken_cards[len(player.taken_cards)-1]] -= 1
+#		croupier.cards[player.taken_cards[len(player.taken_cards)-1]] -= 1
 		bot.send_message(message.from_user.id, "У вас:")
 		for i in player.taken_cards:
 			bot.send_message(message.from_user.id, deck.values[i])

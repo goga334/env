@@ -1,78 +1,185 @@
-import requests
-import os
-import datetime
-from flask import Flask, request
-server = Flask(__name__)
+import telebot
+import config
+import blackjack
+import random
+ 
+from telebot import types
+ 
+bot = telebot.TeleBot(config.TOKEN)
+markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = True)
+markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = True)
+markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = True)
+markup_empty = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = True)
+keyboard = types.InlineKeyboardMarkup()
 
-url = "https://api.telegram.org/bot<1190897437:AAHIYNIR3b1fDrjHS5DTS2oYuFjSLaoRPtA>/"
 
-class BotHandler:
+item1 = types.KeyboardButton("Почати гру")
+markup1.add(item1)
 
-	def __init__(self, token):
-		self.token = token
-		self.api_url = "https://api.telegram.org/bot{}/".format(token)
+item2 = types.KeyboardButton("Ще")
+item3 = types.KeyboardButton("Досить")
+markup2.add(item2, item3)
+
+item4 = types.KeyboardButton("Ще одна гра")
+item5 = types.KeyboardButton("Ні, я пас")
+markup3.add(item4, item5)
+
+key_4 = types.InlineKeyboardButton(text='4', callback_data='4')
+key_5 = types.InlineKeyboardButton(text='5', callback_data='5')
+key_6 = types.InlineKeyboardButton(text='6', callback_data='6')
+key_7 = types.InlineKeyboardButton(text='7', callback_data='7')
+key_8 = types.InlineKeyboardButton(text='8', callback_data='8')
+key_9 = types.InlineKeyboardButton(text='9', callback_data='9')
+key_10 = types.InlineKeyboardButton(text='10', callback_data='10')
+#key_sh = types.InlineKeyboardButton(text='Shuffle-machine', callback_data='sh')
+keyboard.add(key_4,key_5,key_6,key_7,key_8,key_9,key_10)
+
+player = blackjack.Player()
+croupier = blackjack.Croupier()
+deck = blackjack.Deck()
 
 
-	def get_updates(self, offset=None, timeout=30):
-		method = "getUpdates"
-		params = {'timeout': timeout, 'offset': offset}
-		resp = requests.get(self.api_url + method, params)
-		result_json = resp.json()['result']
-		return result_json
 
-	def send_message(self, chat_id, text):
-		params = {'chat_id': chat_id, 'text': text}
-		method = 'sendMessage'
-		resp = requests.post(self.api_url + method, params)
-		return resp
 
-	def get_last_update(self):
-		get_result = self.get_updates()
-		if len(get_result) > 0:
-			last_update = get_result[-1]
+@bot.message_handler(commands=['start'])
+def welcome(message):
+
+	option1 = ''
+	option2 = ''
+	print ("{0.first_name} has began to play".format(message.from_user))
+
+	bot.send_message(message.chat.id, "Вітаю, {0.first_name}!\nЯ - <b>{1.first_name}</b>, бот для гри BlackJack.".format(message.from_user, bot.get_me()),
+		parse_mode='html', reply_markup=markup1)
+ 
+
+
+
+@bot.message_handler(content_types=['text'])
+def get_deck(message):
+
+	if message.text == 'Почати гру' or  message.text == "Ще одна гра":
+		if (player.money < 5):
+			bot.send_message(message.chat.id,"У вас немає грошей аби зробити ставку. Почніть заново")
+		bot.send_message(message.chat.id, text = "Оберіть кількість колод в грі", reply_markup=keyboard)
+
+	elif message.text == "/help":
+		bot.send_message(message.from_user.id, "Напишіть /start")
+
+	elif message.text.isdigit():
+
+		player.stake = int(message.text)
+
+		if (player.stake > player.money):
+			bot.send_message(message.from_user.id,"У вас немає стільки грошей. Але якщо хочеш зробити велику ставку, я візьму все")
+			player.stake = player.money
+
+		player.money -=player.stake
+		player.taken_cards.clear()
+		croupier.taken_cards.clear()
+		player.taken_cards.append(random.randrange(0,12,1))
+		player.taken_cards.append(random.randrange(0,12,1))
+		croupier.taken_cards.append(random.randrange(0,12,1))
+		croupier.taken_cards.append(random.randrange(0,12,1))
+
+		croupier.cards[player.taken_cards[0]] -= 1
+		croupier.cards[player.taken_cards[1]] -= 1
+		croupier.cards[croupier.taken_cards[0]] -= 1
+		croupier.cards[croupier.taken_cards[1]] -= 1
+
+		bot.send_message(message.from_user.id,"У вас '" + deck.values[player.taken_cards[0]] + "'' та '" + deck.values[player.taken_cards[1]]+ "'")
+		bot.send_message(message.from_user.id,"Одна з карт круп'є '" + deck.values[croupier.taken_cards[0]]+ "'")
+		bot.send_message(message.from_user.id,'Ваша сума: ' + str(player.sum()), reply_markup = markup2)
+		if (player.sum() == 21 ):
+			player.win = 1
+			if player.win:
+				bot.send_message(message.from_user.id, "Ви виграли")
+				player.win = 0
+				player.money += player.stake * 1.5
 		else:
-			last_update = get_result[len(get_result)]
-		return last_update
+			bot.send_message(message.from_user.id, '*очікую*', reply_markup=markup2)
+
+	elif message.text == "Ще":
+		player.taken_cards.append(random.randrange(0,12,1))
+		croupier.cards[player.taken_cards[len(player.taken_cards)-1]] -= 1
+		bot.send_message(message.from_user.id, "У вас:")
+		for i in player.taken_cards:
+			bot.send_message(message.from_user.id, deck.values[i])
+		bot.send_message(message.from_user.id, 'Ваша сума:' + str(player.sum()))
+
+		if (player.sum() < 21):
+			bot.send_message(message.from_user.id, '*очікую*', reply_markup=markup2)
+		elif (player.sum() == 21 ):
+			player.win = 1
+			if player.win:
+				bot.send_message(message.from_user.id, "Ви виграли")
+				player.win = 0
+				player.money += player.stake * 1.5
+		else:
+			bot.send_message(message.from_user.id,"Багато")
+			bot.send_message(message.from_user.id,"Виграв круп'є")
+		if croupier.get_cards_num() < croupier.decks*52/3:
+			bot.send_message(message.from_user.id,"Ще одну гру?", reply_markup = markup3)
+		else:
+			bot.send_message(message.from_user.id,"Ваша ставка:\nВід 5 до {0}".format(player.money), reply_markup = markup_empty)
 
 
-greet_bot = BotHandler('1190897437:AAHIYNIR3b1fDrjHS5DTS2oYuFjSLaoRPtA')  
-greetings = ('здравствуй', 'привет', 'ку', 'здорово', 'Hi', 'Bye')  
-now = datetime.datetime.now()
+	elif message.text == "Досить":
+		bot.send_message(message.from_user.id, "Черга круп'є")
+		croupier.play()
+		bot.send_message(message.from_user.id,"Карти круп'є '")
+		for i in croupier.taken_cards:
+			bot.send_message(message.from_user.id, deck.values[i])
+		bot.send_message(message.from_user.id, 'Ваша сума:' + str(croupier.sum()))
+
+		if croupier.sum() <= player.sum() and player.sum() <21 or croupier.sum() > 21:
+			player.win = 1
+
+		if player.win:
+			bot.send_message(message.from_user.id,"Ви виграли")
+			player.win = 0
+			player.money+=player.stake*1.5
+		else:
+			bot.send_message(message.from_user.id,"Виграв круп'є")
+
+		if croupier.get_cards_num() < croupier.decks*52/3:
+			bot.send_message(message.from_user.id,"Ще одну гру?", reply_markup = markup3)
+		else:
+			bot.send_message(message.from_user.id,"Ваша ставка:\nВід 5 до {0}".format(player.money))
+
+	elif message.text == "Ні, я пас":
+		bot.send_message(message.from_user.id, "Як надумаєте повернутися, напишіть /start")
+
+	else:
+		bot.send_message(message.from_user.id, "Я не розумію, що саме я не розумію. Напиши /help.")
 
 
-def main():  
-    new_offset = None
-    today = now.day
-    hour = now.hour
 
-    while True:
-        greet_bot.get_updates(new_offset)
+@bot.callback_query_handler(func=lambda call: True)
 
-        last_update = greet_bot.get_last_update()
+def callback_worker(call):
 
-        last_update_id = last_update['update_id']
-        last_chat_text = last_update['message']['text']
-        last_chat_id = last_update['message']['chat']['id']
-        last_chat_name = last_update['message']['chat']['first_name']
+	if call.data == '4' :
+		croupier.decks = 4
+	elif call.data == '5' :
+		croupier.decks = 5
+	elif call.data == '6' :
+		croupier.decks = 6
+	elif call.data == '7' :
+		croupier.decks = 7
+	elif call.data == '8' :
+		croupier.decks = 8
+	elif call.data == '9' :
+		croupier.decks = 9
+	elif call.data == '10' :
+		croupier.decks = 10
+	bot.send_message(call.message.chat.id, "Гра з {0} колодами карт".format(croupier.decks))
 
-        if last_chat_text.lower() in greetings and today == now.day and 6 <= hour < 12:
-            greet_bot.send_message(last_chat_id, 'Доброе утро, {}'.format(last_chat_name))
-            today += 1
+	for i in range(13):
+		croupier.cards.append(croupier.decks*4)
+	bot.send_message(call.message.chat.id, "Ваш баланс: {0}$".format(player.money))
+	bot.send_message(call.message.chat.id, "Ваша ставка:\nВід 5 до {0}".format(player.money))
 
-        elif last_chat_text.lower() in greetings and today == now.day and 12 <= hour < 17:
-            greet_bot.send_message(last_chat_id, 'Добрый день, {}'.format(last_chat_name))
-            today += 1
 
-        elif last_chat_text.lower() in greetings and today == now.day and 17 <= hour < 23:
-            greet_bot.send_message(last_chat_id, 'Добрый вечер, {}'.format(last_chat_name))
-            today += 1
 
-        new_offset = last_update_id + 1
-
-if __name__ == '__main__': 
-	server.debug = True
-	server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000))) 
-	try:
-		main()
-	except KeyboardInterrupt:
-		exit()
+bot.polling(none_stop=True)
+# RUN

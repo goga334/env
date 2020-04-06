@@ -86,7 +86,7 @@ def get_deck(message):
 		croupier.cards[croupier.taken_cards[0]] -= 1
 		croupier.cards[croupier.taken_cards[1]] -= 1
 
-		bot.send_message(message.from_user.id,"У вас '" + deck.values[player.taken_cards[0]] + "'' та '" + deck.values[player.taken_cards[1]]+ "'")
+		bot.send_message(message.from_user.id,"У вас '" + deck.values[player.taken_cards[0]] + "' та '" + deck.values[player.taken_cards[1]]+ "'")
 		bot.send_message(message.from_user.id,"Одна з карт круп'є '" + deck.values[croupier.taken_cards[0]]+ "'")
 		bot.send_message(message.from_user.id,'Ваша сума: ' + str(player.sum()), reply_markup = markup2)
 		if (player.sum() == 21 ):
@@ -129,7 +129,7 @@ def get_deck(message):
 		bot.send_message(message.from_user.id,"Карти круп'є '")
 		for i in croupier.taken_cards:
 			bot.send_message(message.from_user.id, deck.values[i])
-		bot.send_message(message.from_user.id, 'Ваша сума:' + str(croupier.sum()))
+		bot.send_message(message.from_user.id, "Сума круп'є":' + str(croupier.sum()))
 
 		if croupier.sum() <= player.sum() and player.sum() <21 or croupier.sum() > 21:
 			player.win = 1

@@ -46,7 +46,7 @@ def welcome(message):
 
 	option1 = ''
 	option2 = ''
-	
+	player.money=100
 	bot.send_message(message.chat.id, "Вітаю, {0.first_name}!\nЯ - <b>{1.first_name}</b>, бот для гри BlackJack.".format(message.from_user, bot.get_me()),
 		parse_mode='html', reply_markup=markup1)
  

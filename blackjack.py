@@ -34,7 +34,7 @@ class Deck:
 
 class Player(Deck):
     name = 'player1'
-    money = 100
+    money = 0
     taken_cards = list()
     stake = 0
     win = 0

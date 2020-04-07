@@ -2,97 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="756a6502-1087-4052-a07d-5e4af582f74e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests-2.7.0.dist-info/DESCRIPTION.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests-2.7.0.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests-2.7.0.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests-2.7.0.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests-2.7.0.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests-2.7.0.dist-info/metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests-2.7.0.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/adapters.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/adapters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/cacert.pem" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/certs.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/certs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/compat.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/compat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/cookies.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/cookies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/hooks.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/hooks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/big5freq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/big5prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/chardetect.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/chardistribution.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/charsetgroupprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/charsetprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/codingstatemachine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/constants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/cp949prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/escprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/escsm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/eucjpprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/euckrfreq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/euckrprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/euctwfreq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/euctwprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/gb2312freq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/gb2312prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/hebrewprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/jisfreq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/jpcntx.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/langbulgarianmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/langcyrillicmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/langgreekmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/langhebrewmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/langhungarianmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/langthaimodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/latin1prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/mbcharsetprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/mbcsgroupprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/mbcssm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/sbcharsetprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/sbcsgroupprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/sjisprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/universaldetector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/chardet/utf8prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/_collections.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/connection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/connectionpool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/contrib/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/contrib/ntlmpool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/contrib/pyopenssl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/filepost.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/packages/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/packages/ordered_dict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/packages/six.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/poolmanager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/response.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/connection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/response.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/retry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/ssl_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/timeout.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/packages/urllib3/util/url.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/sessions.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/sessions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/status_codes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/status_codes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/structures.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/structures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/requests/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/requests/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/Lib/site-packages/telebot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/Lib/site-packages/telebot/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,12 +12,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="-2123">
+              <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -117,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blackjack.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="40" column="4" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+            <state relative-caret-position="680">
+              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -137,10 +48,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1346" />
-    <option name="height" value="688" />
+    <option name="x" value="-7" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -164,6 +74,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -192,14 +103,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.24330357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.27332243" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -207,26 +115,30 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27332243" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blackjack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="40" column="4" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="-2123">
+          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blackjack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
         </state>
       </provider>
     </entry>

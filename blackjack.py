@@ -1,4 +1,7 @@
 import random
+import config
+
+
 class Deck:
     
     values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Валет', 'Дама', 'Король', 'Туз']
@@ -17,7 +20,21 @@ class Deck:
         11: 10,
         12: 1
     }
-    
+    stickers = [ config.sticker_id_2,
+                 config.sticker_id_3,
+                 config.sticker_id_4,
+                 config.sticker_id_5,
+                 config.sticker_id_6,
+                 config.sticker_id_7,
+                 config.sticker_id_8,
+                 config.sticker_id_9,
+                 config.sticker_id_10,
+                 config.sticker_id_jack,
+                 config.sticker_id_queen,
+                 config.sticker_id_king,
+                 config.sticker_id_ace
+                 ]
+
     def sum(self):
         sum=0
         for i in self.taken_cards:
@@ -33,7 +50,6 @@ class Deck:
            
 
 class Player(Deck):
-    name = 'player1'
     money = 0
     taken_cards = list()
     stake = 0

@@ -125,3 +125,12 @@ def update_cr_taken_cards(user_id, cr_taken_cards):
     cur.execute(sql, [cr_taken_cards, user_id])
     con.commit()
 
+def logs ():
+    con = sqlite3.connect("bj_data_base.db")
+    cur = con.cursor()
+    result = ""
+    print("Here's a listing of all the records in the table:")
+    for row in cur.execute("SELECT rowid, * FROM bj_logs "):
+        result += str(row)+'\n'
+
+    return result

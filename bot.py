@@ -3,9 +3,11 @@ import config
 import blackjack
 import random
 import db
+import webbrowser
 from telebot import types
 
 bot = telebot.TeleBot(config.TOKEN)
+
 
 markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = True)
 markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = True)
@@ -14,6 +16,7 @@ markup4 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = Tr
 markup_empty = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard = True)
 keyboard = types.InlineKeyboardMarkup()
 
+markup_empty.add(types.KeyboardButton(" "))
 
 item1 = types.KeyboardButton("Почати гру")
 markup1.add(item1)
@@ -42,7 +45,9 @@ croupier = blackjack.Croupier()
 deck = blackjack.Deck()
 
 
-
+@bot.message_handler(commands=['logs'])
+def get_logs(message):
+    bot.send_message(message.chat.id, db.logs(), reply_markup=markup_empty)
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -59,21 +64,23 @@ def start(message):
     print('{0} has began to play'.format(message.from_user))
     print('has began to play'+str(message.from_user.id))
 
-
-
+@bot.message_handler(commands=['help'])
+def help(message):
+	bot.send_message(message.from_user.id, "Команда /start дозволить почати гру\nКоманда /rules дасть посилання на правила")
+@bot.message_handler(commands=['rules'])
+def help(message):
+    bot.send_message(message.from_user.id,'https://www.pokerstarscasino.com/ua/games/blackjack/rules/?no_redirect=1')
 
 @bot.message_handler(content_types=['text'])
-def get_deck(message):
+def game_logic(message):
 
     if message.text == 'Почати гру' or  message.text == "Ще одна гра":
+        bot.send_message(message.from_user.id, text= "Окей, поїхали!", reply_markup=markup_empty)
         bot.send_message(message.chat.id, text = "Оберіть кількість колод в грі", reply_markup=keyboard)
 
-    elif message.text == "/help":
-        bot.send_message(message.from_user.id, "Напишіть /start")
-
     elif message.text.isdigit():
-        for i in range(13):
-            croupier.cards.append(croupier.decks * 4)
+        for i in range(13*croupier.decks * 4):
+            croupier.cards.append(i+1)
         db.update_decks(str(message.from_user.id), croupier.decks)
 
         player.stake = int(message.text)
@@ -107,6 +114,7 @@ def get_deck(message):
         bot.send_message(message.from_user.id,"Одна з карт круп'є ")
         bot.send_sticker(message.from_user.id,deck.stickers[croupier.taken_cards[0]])
         bot.send_message(message.from_user.id,'Ваша сума: ' + str(player.sum()), reply_markup=markup2)
+
         if (player.sum() == 21 ):
             player.win = 1
             if player.win:
@@ -117,7 +125,10 @@ def get_deck(message):
         else:
             bot.send_message(message.from_user.id, '*очікую*', reply_markup=markup2)
 
+
+
     elif message.text == "Ще":
+
         player.taken_cards.append(random.randrange(0,12,1))
 #		croupier.cards[player.taken_cards[len(player.taken_cards)-1]] -= 1
         bot.send_message(message.from_user.id, "У вас:")
@@ -127,6 +138,8 @@ def get_deck(message):
 
         if (player.sum() < 21):
             bot.send_message(message.from_user.id, '*очікую*', reply_markup=markup2)
+            return
+
         elif (player.sum() == 21 ):
             player.win = 1
             if player.win:
@@ -138,12 +151,19 @@ def get_deck(message):
             bot.send_message(message.from_user.id,"Багато")
             bot.send_message(message.from_user.id,"Виграв круп'є")
             if (db.get_money(str(message.from_user.id)) < 5):
-                bot.send_message(message.chat.id, "У вас немає грошей аби зробити ставку. Почніть заново /start")
+                bot.send_message(message.chat.id, "У вас немає грошей аби зробити ставку. Почніть заново /start", reply_markup=markup_empty)
                 return
+            # if croupier.get_cards_num() < croupier.decks*52/3:
+            #     bot.send_message(message.from_user.id,"Ще одну гру?", reply_markup = markup3)
+            # else:
+            #     bot.send_message(message.from_user.id,"Ваша ставка:\nВід 5 до {0}".format(player.money), reply_markup = markup_empty)
+
         if croupier.get_cards_num() < croupier.decks*52/3:
             bot.send_message(message.from_user.id,"Ще одну гру?", reply_markup = markup3)
-        # else:
-        #     bot.send_message(message.from_user.id,"Ваша ставка:\nВід 5 до {0}".format(player.money))
+        else:
+            bot.send_message(message.from_user.id,"Ваша ставка:\nВід 5 до {0}".format(player.money), reply_markup=markup_empty)
+
+
 
     elif message.text == "Досить":
         bot.send_message(message.from_user.id, "Черга круп'є")
@@ -164,19 +184,23 @@ def get_deck(message):
         else:
             bot.send_message(message.from_user.id,"Виграв круп'є")
             if (db.get_money(str(message.from_user.id)) < 5):
-                bot.send_message(message.chat.id, "У вас немає грошей аби зробити ставку. Почніть заново /start")
+                bot.send_message(message.chat.id, "У вас немає грошей аби зробити ставку. Почніть заново /start", reply_markup=markup_empty)
                 return
 
         if croupier.get_cards_num() < croupier.decks*52/3:
             bot.send_message(message.from_user.id,"Ще одну гру?", reply_markup = markup3)
         else:
-            bot.send_message(message.from_user.id,"Ваша ставка:\nВід 5 до {0}".format(player.money))
+            bot.send_message(message.from_user.id,"Ваша ставка:\nВід 5 до {0}".format(player.money), reply_markup=markup_empty)
+
+
 
     elif message.text == "Ні, я пас":
-        bot.send_message(message.from_user.id, "Як надумаєте повернутися, напишіть /start")
+        bot.send_message(message.from_user.id, "Як надумаєте повернутися, напишіть /start", reply_markup=markup_empty)
+
+
 
     else:
-        bot.send_message(message.from_user.id, "Я не розумію, що саме я не розумію. Напиши /help.")
+        bot.send_message(message.from_user.id, "Я не розумію, що саме я не розумію. Напиши /help.", reply_markup=markup_empty)
 
 
 
